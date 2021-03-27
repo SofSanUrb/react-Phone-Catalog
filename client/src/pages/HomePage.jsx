@@ -1,23 +1,20 @@
-import logo from "../logo.svg";
+import { React, useState, useEffect } from "react";
+import config from '../config'
+import axios from 'axios'
 import "../App.css";
 
 function HomePage() {
+  const [phones, setPhones] = useState([])
+
+  useEffect(() => {
+    axios.get(`${config.API_URL}/api/phones`)
+      .then((response) => setPhones(response.data))
+      .catch(() => console.log('Fetching failed'))
+  },[])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {phones.length ? <h2>{phones.name}</h2> : <h2>No phones...yet</h2>}
     </div>
   );
 }

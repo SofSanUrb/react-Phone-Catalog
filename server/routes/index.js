@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const PhoneModel = require("../models/Phone.model");
-const uploader = require('../middlewares/cloudinary.config.js');
+const uploader = require('../utils/cloudinary.config.js');
 
 //Main server routes
 
@@ -21,7 +21,7 @@ router.get("/phones", (req, res) => {
 //Create new Phone (WE NEED CLOUDINARY)
 router.post("/add-phone", uploader.single("imageUrl"), (req, res) => {
   let imageFileName = "";
-  req.file ? (imageFileName = req.file.path) : (imageFileName = "");
+  req.file ? (imageFileName = req.file.path) : (imageFileName = null);
 
   const {
     name,
@@ -41,7 +41,8 @@ router.post("/add-phone", uploader.single("imageUrl"), (req, res) => {
     !price ||
     !screen ||
     !processor ||
-    !ram
+    !ram ||
+    !imageFileName
   ) {
     res.status(500).json({
       errorMessage: "Please fill in all fields",
