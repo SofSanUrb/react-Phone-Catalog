@@ -1,8 +1,13 @@
 # Dependency directory
 node_modules
+package-lock.json
 
 # Debug log from npm
 npm-debug.log
 
 # Environment Variables should NEVER be published
 .env
+
+#vs code settings
+.vscode
+settings.json
