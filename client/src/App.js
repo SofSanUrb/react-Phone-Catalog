@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import AddPhone from "./pages/AddPhone";
 import MyNavBar from "./components/MyNavBar";
 import MyFooter from "./components/MyFooter";
+import PhoneDetail from "./pages/PhoneDetail"
 import config from "./config";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -37,6 +38,10 @@ function App(props) {
       .catch((err) => setError(err.response.data));
   };
 
+  const handleDeletePhone = () => {
+
+  }
+
   return (
     <div className="App">
       <MyNavBar />
@@ -46,6 +51,12 @@ function App(props) {
           path="/addPhone"
           render={() => {
             return <AddPhone onAdd={handleAddPhone} error={errorMessage} />;
+          }}
+        />
+        <Route
+          path="/phones/:phoneId"
+          render={(routeProps) => {
+            return <PhoneDetail onDelete={handleDeletePhone} {...routeProps} />;
           }}
         />
       </Switch>

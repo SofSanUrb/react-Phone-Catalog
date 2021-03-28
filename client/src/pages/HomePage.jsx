@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import config from "../config";
 import axios from "axios";
 import Spinner from "react-bootstrap/Spinner";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const [phones, setPhones] = useState([]);
@@ -20,14 +21,16 @@ function HomePage() {
         {phones.length ? (
           phones.map((phone) => {
             return (
-              <div className="phone-card">
-                <img
-                  className="phone-index-picture"
-                  src={phone.imageFileName}
-                  alt="phone-front"
-                />
-                <h2 key={phone._id}>{phone.name}</h2>
-              </div>
+              <Link to={`/phones/{phone._id}`}>
+                <div className="phone-card">
+                  <img
+                    className="phone-index-picture"
+                    src={phone.imageFileName}
+                    alt="phone-front"
+                  />
+                  <h2 key={phone._id}>{phone.name}</h2>
+                </div>
+              </Link>
             );
           })
         ) : (

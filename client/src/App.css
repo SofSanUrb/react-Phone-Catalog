@@ -23,6 +23,11 @@ body {
   border: 0 solid none;
 }
 
+a, a:hover{
+  text-decoration: none;
+
+}
+
 .phone-card:hover {
   box-shadow: 15px 15px 30px #c8cfd9,
   -15px -15px 30px #e0faff;
