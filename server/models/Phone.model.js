@@ -35,7 +35,7 @@ const phoneSchema = new Schema({
     required: true
   },
   ram:{
-    type: String,
+    type: Number,
     required: true
   }
 });

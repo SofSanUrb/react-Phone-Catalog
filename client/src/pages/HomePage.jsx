@@ -14,7 +14,9 @@ function HomePage() {
 
   return (
     <div className="App">
-      {phones.length ? <h2>{phones.name}</h2> : <h2>No phones...yet</h2>}
+    <h1>Phone Catalog</h1>
+      {phones.length && phones.map(phone => {
+        return (<h2 key={phone._id}>{phone.name}</h2>)})}
     </div>
   );
 }

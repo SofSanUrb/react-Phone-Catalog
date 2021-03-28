@@ -21,7 +21,7 @@ router.get("/phones", (req, res) => {
 //Create new Phone (WE NEED CLOUDINARY)
 router.post("/add-phone", uploader.single("imageUrl"), (req, res) => {
   let imageFileName = "";
-  req.file ? (imageFileName = req.file.path) : (imageFileName = null);
+  req.file ? (imageFileName = req.file.path) : (imageFileName = "");
 
   const {
     name,
@@ -36,6 +36,7 @@ router.post("/add-phone", uploader.single("imageUrl"), (req, res) => {
 
   if (
     !name ||
+    !manufacturer ||
     !description ||
     !color ||
     !price ||
