@@ -34,6 +34,41 @@ a, a:hover{
   transition: 1.5s
 }
 
-.phone-index-picture {
+.phone-index-picture, .phone-detail img {
   height: 300px;
+  object-fit: contain;
+}
+
+.phone-detail{
+  border: 1px solid rgb(201, 200, 200);
+  border-radius: 15px;
+  box-shadow: 15px 15px 30px #c8cfd9,
+  -15px -15px 30px #e0faff;
+  max-width: 400px;
+}
+.phone-details-row{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.phone-details-row p {
+  margin-right: 5px;
+}
+
+.detail-info{
+  margin: 20px;
+}
+
+.card-column{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-italic{
+  font-style: italic;
+  color: grey
 }
