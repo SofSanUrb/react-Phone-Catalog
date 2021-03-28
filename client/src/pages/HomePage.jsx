@@ -21,7 +21,7 @@ function HomePage() {
         {phones.length ? (
           phones.map((phone) => {
             return (
-              <Link to={`/phones/{phone._id}`}>
+              <Link to={`/phones/${phone._id}`}>
                 <div className="phone-card">
                   <img
                     className="phone-index-picture"

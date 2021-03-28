@@ -31,6 +31,7 @@ a, a:hover{
 .phone-card:hover {
   box-shadow: 15px 15px 30px #c8cfd9,
   -15px -15px 30px #e0faff;
+  transition: 1.5s
 }
 
 .phone-index-picture {
