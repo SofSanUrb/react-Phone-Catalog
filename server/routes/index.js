@@ -88,10 +88,77 @@ router.post("/add-phone", uploader.single("imageUrl"), (req, res) => {
 });
 
 //Edit existing Phone (WE NEED CLOUDINARY)
+router.patch("/edit/phoneId", uploader.single("imageUrl"), (req, res) => {
+  let imageFileName = "";
+  const {
+    name,
+    manufacturer,
+    description,
+    color,
+    price,
+    screen,
+    processor,
+    ram,
+  } = req.body;
+
+  if (
+    !name ||
+    !manufacturer ||
+    !description ||
+    !color ||
+    !price ||
+    !screen ||
+    !processor ||
+    !ram
+  ) {
+    res.status(500).json({
+      errorMessage: "Please fill in all fields",
+    });
+    return;
+  }
+
+  PhoneModel.findById(req.params.phoneId)
+    .then((response) => {
+      req.file
+        ? (imageFileName = req.file.path)
+        : (imageFileName = response.data.imageFileName);
+      PhoneModel.findByIdAndUpdate(
+        req.params.phoneId,
+        {
+          name,
+          manufacturer,
+          description,
+          color,
+          price,
+          screen,
+          processor,
+          ram,
+          imageFileName: imageFileName,
+        },
+        { new: true }
+      )
+        .then((response) => {
+          res.status(200).json(response);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(500).json({
+            error: "Something went wrong updating",
+            message: err,
+          });
+        });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        errorMessage: "Something went wrong",
+        message: err,
+      });
+    });
+});
 
 //Delete existing Phone
 router.delete("/delete/:phoneId", (req, res) => {
-  PhoneModel.findOneAndDelete(req.params.phoneId)
+  PhoneModel.findByIdAndDelete(req.params.phoneId)
     .then((phones) => {
       res.status(200).json(phones);
     })

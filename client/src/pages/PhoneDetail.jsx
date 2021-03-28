@@ -13,8 +13,8 @@ export default function PhoneDetail(props) {
       .catch(() => console.log("Fetching failed"));
   }, [props.match.params.phoneId]);
 
-  const handleDeletePhone = (phoneId) => {
-    axios.delete(`${config.API_URL}/api/delete/${phoneId}`)
+  const handleDeletePhone = (id) => {
+    axios.delete(`${config.API_URL}/api/delete/${id}`)
     .then(() => {
       props.history.push('/')
   })
@@ -51,7 +51,7 @@ export default function PhoneDetail(props) {
             <Link to={`/edit/${phone._id}`}>
               <Button variant="primary">Edit</Button>
             </Link>
-            <Button variant="light" onClick={handleDeletePhone}>Delete</Button>
+            <Button variant="light" onClick={() => handleDeletePhone(phone._id)}>Delete</Button>
           </div>
         </div>
       ) : (
