@@ -88,7 +88,7 @@ router.post("/add-phone", uploader.single("imageUrl"), (req, res) => {
 });
 
 //Edit existing Phone (WE NEED CLOUDINARY)
-router.patch("/edit/phoneId", uploader.single("imageUrl"), (req, res) => {
+router.patch("/edit/:phoneId", uploader.single("imageUrl"), (req, res) => {
   let imageFileName = "";
   const {
     name,
@@ -121,7 +121,7 @@ router.patch("/edit/phoneId", uploader.single("imageUrl"), (req, res) => {
     .then((response) => {
       req.file
         ? (imageFileName = req.file.path)
-        : (imageFileName = response.data.imageFileName);
+        : (imageFileName = response.imageFileName);
       PhoneModel.findByIdAndUpdate(
         req.params.phoneId,
         {

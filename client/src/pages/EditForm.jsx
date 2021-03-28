@@ -4,8 +4,9 @@ import config from "../config";
 import axios from "axios";
 
 export default function EditForm(props) {
-  const {onEdit} = props
   const [phone, setPhone] = useState({});
+  const [error, setError] = useState(null);
+
   useEffect(() => {
     axios
       .get(`${config.API_URL}/api/phones/${props.match.params.phoneId}`)
@@ -19,8 +20,30 @@ export default function EditForm(props) {
       [event.currentTarget.name]: event.currentTarget.value,
     });
 
+  const handleEditPhone = (event) => {
+    event.preventDefault();
+
+    let uploadForm = new FormData();
+    uploadForm.append("imageUrl", event.target.imageUrl.files[0]);
+    uploadForm.append("name", event.target.name.value);
+    uploadForm.append("manufacturer", event.target.manufacturer.value);
+    uploadForm.append("description", event.target.description.value);
+    uploadForm.append("color", event.target.color.value);
+    uploadForm.append("price", event.target.price.value);
+    uploadForm.append("screen", event.target.screen.value);
+    uploadForm.append("processor", event.target.processor.value);
+    uploadForm.append("ram", event.target.ram.value);
+
+    axios
+      .patch(`${config.API_URL}/api/edit/${props.match.params.phoneId}`, uploadForm)
+      .then((response) => {
+        props.history.push("/");
+      })
+      .catch((err) => setError(err.response.data));
+  };
+
   return (
-    <Form onSubmit={onEdit}>
+    <Form onSubmit={handleEditPhone}>
       <Form.Group>
         <Form.Label>Name</Form.Label>
         <Form.Control
@@ -99,7 +122,7 @@ export default function EditForm(props) {
           onChange={handleChangeForm}
         />
       </Form.Group>
-      {/* {error ? <p className="errorMessage">{error.errorMessage}</p> : null} */}
+      {error ? <p className="errorMessage">{error.errorMessage}</p> : null}
       <Button variant="primary" type="submit">
         Submit
       </Button>
