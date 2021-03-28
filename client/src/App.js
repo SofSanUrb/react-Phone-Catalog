@@ -34,7 +34,7 @@ function App(props) {
       .then((response) => {
         props.history.push("/");
       })
-      .catch((err) => setError(err));
+      .catch((err) => setError(err.response.data));
   };
 
   return (

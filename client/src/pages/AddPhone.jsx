@@ -45,7 +45,7 @@ export default function AddPhone(props) {
         <Form.Control name="ram" type="number" placeholder="2" />
       </Form.Group>
       {error ? (
-        <p className="errorMessage">{props.error.errorMessage}</p>
+        <p className="errorMessage">{error.errorMessage}</p>
       ) : null}
       <Button variant="primary" type="submit">
         Submit
