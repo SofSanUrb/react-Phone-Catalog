@@ -6,11 +6,17 @@ import { Link } from "react-router-dom";
 
 function HomePage() {
   const [phones, setPhones] = useState([]);
+  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
     axios
       .get(`${config.API_URL}/api/phones`)
-      .then((response) => setPhones(response.data))
+      .then((response) => {
+        setPhones(response.data)
+        setTimeout(() => {
+          setLoading(false)
+        }, 1000);
+      })
       .catch(() => console.log("Fetching failed"));
   }, []);
 
@@ -18,7 +24,9 @@ function HomePage() {
     <div className="App">
       <h1>Phone Catalog</h1>
       <section id="phone-catalog">
-        {phones.length ? (
+        {isLoading ? (
+          <Spinner className="my-spinner" animation="grow" />
+        ) : (
           phones.map((phone) => {
             return (
               <Link to={`/phones/${phone._id}`}>
@@ -33,8 +41,6 @@ function HomePage() {
               </Link>
             );
           })
-        ) : (
-          <Spinner animation="grow" />
         )}
       </section>
     </div>

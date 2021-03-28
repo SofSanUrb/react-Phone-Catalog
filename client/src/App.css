@@ -7,6 +7,10 @@ body {
   text-align: center;
 }
 
+.my-spinner{
+  width: 600px;
+}
+
 #phone-catalog {
   display: flex;
   justify-content: space-between;

@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 import config from "../config";
 import axios from "axios";
 
@@ -122,7 +122,7 @@ export default function EditForm(props) {
           onChange={handleChangeForm}
         />
       </Form.Group>
-      {error ? <p className="errorMessage">{error.errorMessage}</p> : null}
+      {error ? <Alert variant="warning" className="errorMessage">{error.errorMessage}</Alert> : null}
       <Button variant="primary" type="submit">
         Submit
       </Button>

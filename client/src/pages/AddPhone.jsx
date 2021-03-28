@@ -1,11 +1,37 @@
-import React from "react";
-import { Form, Button } from "react-bootstrap";
+import {React, useState} from "react";
+import { Form, Button, Alert } from "react-bootstrap";
+import config from "../config";
+import axios from "axios";
 
 export default function AddPhone(props) {
-  const { onAdd, error } = props;
+  const [error, setError] = useState(null);
+
+  const handleAddPhone = (event) => {
+    event.preventDefault();
+
+    let uploadForm = new FormData();
+    uploadForm.append("imageUrl", event.target.imageUrl.files[0]);
+    uploadForm.append("name", event.target.name.value);
+    uploadForm.append("manufacturer", event.target.manufacturer.value);
+    uploadForm.append("description", event.target.description.value);
+    uploadForm.append("color", event.target.color.value);
+    uploadForm.append("price", event.target.price.value);
+    uploadForm.append("screen", event.target.screen.value);
+    uploadForm.append("processor", event.target.processor.value);
+    uploadForm.append("ram", event.target.ram.value);
+
+    axios
+      .post(`${config.API_URL}/api/add-phone`, uploadForm, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        props.history.push("/");
+      })
+      .catch((err) => setError(err.response.data));
+  };
   
   return (
-    <Form onSubmit={onAdd}>
+    <Form onSubmit={handleAddPhone}>
       <Form.Group>
         <Form.Label>Name</Form.Label>
         <Form.Control name="name" type="text" placeholder="Iphone xx" />
@@ -45,9 +71,7 @@ export default function AddPhone(props) {
         <Form.Label>Ram</Form.Label>
         <Form.Control name="ram" type="number" placeholder="2" />
       </Form.Group>
-      {error ? (
-        <p className="errorMessage">{error.errorMessage}</p>
-      ) : null}
+      {error ? <Alert variant="warning" className="errorMessage">{error.errorMessage}</Alert> : null}
       <Button variant="primary" type="submit">
         Submit
       </Button>

@@ -47,8 +47,8 @@ function App(props) {
         <Route exact path="/" component={HomePage} />
         <Route
           path="/addPhone"
-          render={() => {
-            return <AddPhone onAdd={handleAddPhone} error={errorMessage} />;
+          render={(routeProps) => {
+            return <AddPhone {...routeProps} />;
           }}
         />
         <Route
