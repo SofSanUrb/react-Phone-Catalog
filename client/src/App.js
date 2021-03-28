@@ -5,6 +5,7 @@ import AddPhone from "./pages/AddPhone";
 import MyNavBar from "./components/MyNavBar";
 import MyFooter from "./components/MyFooter";
 import PhoneDetail from "./pages/PhoneDetail"
+import EditForm from "./pages/EditForm"
 import config from "./config";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -38,7 +39,7 @@ function App(props) {
       .catch((err) => setError(err.response.data));
   };
 
-  const handleDeletePhone = () => {
+  const handleEditPhone = () => {
 
   }
 
@@ -56,7 +57,13 @@ function App(props) {
         <Route
           path="/phones/:phoneId"
           render={(routeProps) => {
-            return <PhoneDetail onDelete={handleDeletePhone} {...routeProps} />;
+            return <PhoneDetail {...routeProps} />;
+          }}
+        />
+        <Route
+          path="/edit/:phoneId"
+          render={(routeProps) => {
+            return <EditForm onEdit={handleEditPhone} {...routeProps} />;
           }}
         />
       </Switch>

@@ -14,6 +14,8 @@ function HomePage() {
       .catch(() => console.log("Fetching failed"));
   }, []);
 
+ 
+
   return (
     <div className="App">
       <h1>Phone Catalog</h1>

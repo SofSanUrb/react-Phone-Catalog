@@ -53,6 +53,10 @@ a, a:hover{
   flex-wrap: nowrap;
 }
 
+.detail-buttons{
+padding: 20px 100px;
+}
+
 .phone-details-row p {
   margin-right: 5px;
 }
