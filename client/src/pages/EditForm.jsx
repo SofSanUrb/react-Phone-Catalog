@@ -43,7 +43,7 @@ export default function EditForm(props) {
   };
 
   return (
-    <Form onSubmit={handleEditPhone}>
+    <Form className="card-column" onSubmit={handleEditPhone}>
       <Form.Group>
         <Form.Label>Name</Form.Label>
         <Form.Control

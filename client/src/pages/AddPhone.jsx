@@ -31,7 +31,7 @@ export default function AddPhone(props) {
   };
   
   return (
-    <Form onSubmit={handleAddPhone}>
+    <Form className="card-column" onSubmit={handleAddPhone}>
       <Form.Group>
         <Form.Label>Name</Form.Label>
         <Form.Control name="name" type="text" placeholder="Iphone xx" />
