@@ -16,7 +16,7 @@ export default function PhoneDetail(props) {
         withCredentials: true,
       })
       .then((response) => {
-        setPhone(response);
+        setPhone(response.data);
         setLoading(false);
       })
       .catch(() => console.log("Fetching failed"));
