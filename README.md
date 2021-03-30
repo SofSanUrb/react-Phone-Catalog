@@ -4,7 +4,7 @@ The challenge in this projects is to create a phone catalogue app from scratch
 
 ## 💻 Live Web
 
-[Link]().
+[**LIVE LINK**](https://ssurbano-phone-catalog-client.herokuapp.com/)
 
 ---
 
@@ -57,29 +57,43 @@ The challenge in this projects is to create a phone catalogue app from scratch
 ### Pre-requirements
 
 You need [```Node```](https://nodejs.org/es/) previously installed in your computer.
-
 To start using this project, clone this repo to a new directory.
 
 ### ➡️ Node
-***
-
 You have to go to server and run npm install in order to install the necesary dependencies.
+#### - Server
+General Environment variables (server side):
+> ```console
+> PORT=5005
+> ORIGIN=http://localhost:3000
+> ```
+Console:
 > ```console
 > $ cd server
 > $ npm install
 > ```
+
 Now you need to do the same thing on the client side.
+Environment variables:
+> ```console
+> REACT_APP_SERVER_URL=http://localhost:5005
+> ```console
+
+Console:
 > ```console
 > $ cd client
 > $ npm install
 > ```
 
 Once you have installed the dependencies, you are ready to run the app with ```npm start```. Like above, we need to do it both in server and client sides.
+
+Server Side:
 > ```console
 > $ cd server
 > $ npm run dev
 > ```
 
+Client side:
 >  ```console
 > $ cd client
 > $ npm start
@@ -97,14 +111,14 @@ Once you have installed the dependencies, you are ready to run the app with ```n
 - API key
 - API Secret
 
-3 - These 3 elements are unique to you and will need them to use cloudinary. You will need to add them to your .env file (server side):
+3 - These 3 elements are unique to you and will need them to use cloudinary. You will need to add them to your .env file:
 ````
 CLOUD_NAME=your-cloudinary-name
 CLOUD_API_KEY=your-cloudinary-key
 CLOUD_API_SECRET=your-cloudinary-secret
 ````
 ## 💯 Improvements 
-- I would rather use one repository for the client side and one repository for the server side due to security reasons.
+-  Good practice use one repository for the client side and one separate repository for the server side.
 - Apply Testing
 - Protect the Database from non logged-in users with authentication feature
 
