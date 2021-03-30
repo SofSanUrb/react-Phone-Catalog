@@ -29,7 +29,6 @@ export default function PhoneDetail(props) {
       <title>Phone - Details</title>
     </Helmet>
     <div className="card-column">
-      {Object.keys(phone) ? (
         <div className="phone-detail">
           <img
             className="phone-index-picture"
@@ -60,9 +59,6 @@ export default function PhoneDetail(props) {
             <Button variant="light" onClick={() => handleDeletePhone(phone._id)}>Delete</Button>
           </div>
         </div>
-      ) : (
-        <Spinner animation="grow" />
-      )}
     </div>
     </>
   );
