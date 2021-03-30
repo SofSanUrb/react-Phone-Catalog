@@ -20,7 +20,7 @@ export default function PhoneDetail(props) {
         setLoading(false);
       })
       .catch(() => console.log("Fetching failed"));
-  }, [props.match.params.phoneId]);
+  }, []);
 
   const handleDeletePhone = (id) => {
     axios
