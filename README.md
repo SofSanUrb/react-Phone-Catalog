@@ -77,7 +77,7 @@ Now you need to do the same thing on the client side.
 Environment variables:
 > ```console
 > REACT_APP_SERVER_URL=http://localhost:5005
-> ```console
+> ```
 
 Console:
 > ```console
@@ -118,7 +118,7 @@ CLOUD_API_KEY=your-cloudinary-key
 CLOUD_API_SECRET=your-cloudinary-secret
 ````
 ## 💯 Improvements 
--  Good practice use one repository for the client side and one separate repository for the server side.
+- Good practice: using one repository for the client side and one separate repository for the server side.
 - Apply Testing
 - Protect the Database from non logged-in users with authentication feature
 
