@@ -6,15 +6,15 @@ import { Link } from "react-router-dom";
 
 function HomePage() {
   const [phones, setPhones] = useState([]);
-  const [isLoading, setLoading] = useState(true)
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get(`${config.API_URL}/api/phones`)
       .then((response) => {
-        setPhones(response.data)
+        setPhones(response.data);
         setTimeout(() => {
-          setLoading(false)
+          setLoading(false);
         }, 1000);
       })
       .catch(() => console.log("Fetching failed"));
@@ -23,26 +23,29 @@ function HomePage() {
   return (
     <div className="App">
       <h1>Phone Catalog</h1>
-      <section id="phone-catalog">
-        {isLoading ? (
+
+      {isLoading ? (
+        <div className="spinner-column">
           <Spinner className="my-spinner" animation="grow" />
-        ) : (
-          phones.map((phone) => {
+        </div>
+      ) : (
+        <section id="phone-catalog">
+          {phones.map((phone) => {
             return (
-              <Link to={`/phones/${phone._id}`}>
-                <div className="phone-card">
+                <div className="phone-card" key={phone._id}>
                   <img
                     className="phone-index-picture"
                     src={phone.imageFileName}
                     alt="phone-front"
                   />
                   <h2 key={phone._id}>{phone.name}</h2>
+                  <Link to={`/phones/${phone._id}`}>More Info</Link>
                 </div>
-              </Link>
+            
             );
-          })
-        )}
-      </section>
+          })}
+        </section>
+      )}
     </div>
   );
 }
