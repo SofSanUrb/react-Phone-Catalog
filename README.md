@@ -56,12 +56,9 @@ The challenge in this projects is to create a phone catalogue app from scratch
 
 ### Pre-requirements
 
-You need to have [```Node```](https://nodejs.org/es/) previously installed in your computer.
+You need [```Node```](https://nodejs.org/es/) previously installed in your computer.
 
 To start using this project, clone this repo to a new directory.
-> ```console
->  $ git clone https://github.com/conchaasensiomr/react-phone-catalog.git
-> ```
 
 ### ➡️ Node
 ***
@@ -100,7 +97,7 @@ Once you have installed the dependencies, you are ready to run the app with ```n
 - API key
 - API Secret
 
-3 - These 3 elements are unique to you and will need them to use cloudinary. You will need to add them to your .env file:
+3 - These 3 elements are unique to you and will need them to use cloudinary. You will need to add them to your .env file (server side):
 ````
 CLOUD_NAME=your-cloudinary-name
 CLOUD_API_KEY=your-cloudinary-key
