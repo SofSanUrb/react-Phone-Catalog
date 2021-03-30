@@ -1,15 +1,18 @@
 import { React, useState } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
+
 import HomePage from "./pages/HomePage";
 import AddPhone from "./pages/AddPhone";
 import MyNavBar from "./components/MyNavBar";
 import MyFooter from "./components/MyFooter";
-import PhoneDetail from "./pages/PhoneDetail"
-import EditForm from "./pages/EditForm"
-import config from "./config";
+import PhoneDetail from "./pages/PhoneDetail";
+import EditForm from "./pages/EditForm";
+import NotFound from "./pages/NotFound"
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+
+import config from "./config";
 import axios from "axios";
 
 function App(props) {
@@ -39,7 +42,6 @@ function App(props) {
       .catch((err) => setError(err.response.data));
   };
 
-
   return (
     <div className="App">
       <MyNavBar />
@@ -61,6 +63,11 @@ function App(props) {
           path="/edit/:phoneId"
           render={(routeProps) => {
             return <EditForm {...routeProps} />;
+          }}
+        />
+        <Route
+          render={() => {
+            return <NotFound />;
           }}
         />
       </Switch>

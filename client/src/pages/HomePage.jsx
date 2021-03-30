@@ -1,8 +1,9 @@
 import { React, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Spinner from "react-bootstrap/Spinner";
+
 import config from "../config";
 import axios from "axios";
-import Spinner from "react-bootstrap/Spinner";
-import { Link } from "react-router-dom";
 
 function HomePage() {
   const [phones, setPhones] = useState([]);

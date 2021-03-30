@@ -1,5 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
+import { Helmet } from "react-helmet";
+
 import config from "../config";
 import axios from "axios";
 
@@ -43,6 +45,10 @@ export default function EditForm(props) {
   };
 
   return (
+    <>
+    <Helmet>
+      <title>Phone - Edit</title>
+    </Helmet>
     <Form className="card-column" onSubmit={handleEditPhone}>
       <Form.Group>
         <Form.Label>Name</Form.Label>
@@ -127,5 +133,6 @@ export default function EditForm(props) {
         Submit
       </Button>
     </Form>
+    </>
   );
 }

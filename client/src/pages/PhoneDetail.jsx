@@ -1,8 +1,10 @@
 import { React, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { Spinner, Button } from "react-bootstrap";
+
 import config from "../config";
 import axios from "axios";
-import { Spinner, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 export default function PhoneDetail(props) {
   const [phone, setPhone] = useState({});
@@ -22,6 +24,10 @@ export default function PhoneDetail(props) {
   }
 
   return (
+    <>
+    <Helmet>
+      <title>Phone - Details</title>
+    </Helmet>
     <div className="card-column">
       {Object.keys(phone) ? (
         <div className="phone-detail">
@@ -58,5 +64,6 @@ export default function PhoneDetail(props) {
         <Spinner animation="grow" />
       )}
     </div>
+    </>
   );
 }
