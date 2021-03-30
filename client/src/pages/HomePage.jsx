@@ -11,7 +11,7 @@ function HomePage() {
 
   useEffect(() => {
     axios
-      .get(`${config.API_URL}/api/phones`)
+      .get(`${config.API_URL}/api/phones`, {withCredentials:true})
       .then((response) => {
         setPhones(response.data);
         setTimeout(() => {

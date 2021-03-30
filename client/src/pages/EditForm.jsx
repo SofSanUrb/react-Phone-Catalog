@@ -11,7 +11,7 @@ export default function EditForm(props) {
 
   useEffect(() => {
     axios
-      .get(`${config.API_URL}/api/phones/${props.match.params.phoneId}`)
+      .get(`${config.API_URL}/api/phones/${props.match.params.phoneId}`, {withCredentials:true})
       .then((response) => setPhone(response.data))
       .catch(() => console.log("Fetching failed"));
   }, [props.match.params.phoneId]);
@@ -37,7 +37,7 @@ export default function EditForm(props) {
     uploadForm.append("ram", event.target.ram.value);
 
     axios
-      .patch(`${config.API_URL}/api/edit/${props.match.params.phoneId}`, uploadForm)
+      .patch(`${config.API_URL}/api/edit/${props.match.params.phoneId}`, uploadForm, {withCredentials:true})
       .then((response) => {
         props.history.push("/");
       })

@@ -16,32 +16,6 @@ import config from "./config";
 import axios from "axios";
 
 function App(props) {
-  const [errorMessage, setError] = useState(null);
-
-  const handleAddPhone = (event) => {
-    event.preventDefault();
-
-    let uploadForm = new FormData();
-    uploadForm.append("imageUrl", event.target.imageUrl.files[0]);
-    uploadForm.append("name", event.target.name.value);
-    uploadForm.append("manufacturer", event.target.manufacturer.value);
-    uploadForm.append("description", event.target.description.value);
-    uploadForm.append("color", event.target.color.value);
-    uploadForm.append("price", event.target.price.value);
-    uploadForm.append("screen", event.target.screen.value);
-    uploadForm.append("processor", event.target.processor.value);
-    uploadForm.append("ram", event.target.ram.value);
-
-    axios
-      .post(`${config.API_URL}/api/add-phone`, uploadForm, {
-        withCredentials: true,
-      })
-      .then((response) => {
-        props.history.push("/");
-      })
-      .catch((err) => setError(err.response.data));
-  };
-
   return (
     <div className="App">
       <MyNavBar />

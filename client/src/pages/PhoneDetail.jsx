@@ -10,13 +10,13 @@ export default function PhoneDetail(props) {
   const [phone, setPhone] = useState({});
   useEffect(() => {
     axios
-      .get(`${config.API_URL}/api/phones/${props.match.params.phoneId}`)
+      .get(`${config.API_URL}/api/phones/${props.match.params.phoneId}`, {withCredentials:true})
       .then((response) => setPhone(response.data))
       .catch(() => console.log("Fetching failed"));
   }, [props.match.params.phoneId]);
 
   const handleDeletePhone = (id) => {
-    axios.delete(`${config.API_URL}/api/delete/${id}`)
+    axios.delete(`${config.API_URL}/api/delete/${id}`, {withCredentials:true})
     .then(() => {
       props.history.push('/')
   })

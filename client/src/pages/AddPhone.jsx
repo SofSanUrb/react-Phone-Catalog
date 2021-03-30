@@ -23,9 +23,7 @@ export default function AddPhone(props) {
     uploadForm.append("ram", event.target.ram.value);
 
     axios
-      .post(`${config.API_URL}/api/add-phone`, uploadForm, {
-        withCredentials: true,
-      })
+      .post(`${config.API_URL}/api/add-phone`, uploadForm, {withCredentials: true})
       .then((response) => {
         props.history.push("/");
       })
